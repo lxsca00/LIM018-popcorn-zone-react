@@ -1,0 +1,38 @@
+:root {
+  --black: #131313;
+  --orange1: #F25F4C;
+  --orange2: #FF8906;
+  --gray: #9D9D9F ;
+  --gray2: #32333B;
+  --white:  #FFFFFE;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Lato', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input {
+  font-family: 'Lato', sans-serif;
+}
+
+button {
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  font-family: 'Lato', sans-serif;
+}
+
+button:hover {
+  transform: scale(.9);
+}

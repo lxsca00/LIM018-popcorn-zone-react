@@ -1,0 +1,13 @@
+.welcome {
+    min-height: 100vh;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.welcomeButtonContainer {
+    display: flex;
+    gap: 1.5rem;
+}

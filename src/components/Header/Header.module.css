@@ -1,0 +1,10 @@
+header {
+    background: var(--orange2);
+    display: flex;
+    justify-content: space-between;
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+}
