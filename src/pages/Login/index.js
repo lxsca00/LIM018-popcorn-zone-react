@@ -1,9 +1,10 @@
 import React from "react";
 import { LoginForm } from "../../components/Forms";
+import style from "./Login.module.css"
 
 function Login() {
   return (
-    <section>
+    <section className={style.login}>
       <LoginForm />
       <p>Ingresa con</p>
       <div>
@@ -12,7 +13,7 @@ function Login() {
       </div>
       <div>
         <p>¿No tienes cuenta?</p>
-        <p>Regístrate</p>
+        <p>Regístrate aquí</p>
       </div>
     </section>
   );

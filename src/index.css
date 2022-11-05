@@ -28,7 +28,7 @@ input {
 
 button {
   border: none;
-  border-radius: 1rem;
+  border-radius: 0.6rem;
   padding: 0.5rem 1rem;
   font-family: 'Lato', sans-serif;
 }
