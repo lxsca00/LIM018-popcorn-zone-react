@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import style from "./Forms.module.css";
+//import { onSetDoc } from "../../firebase";
 
 const RegisterForm = ({ onOpenModal, handleError }) => {
   const [name, setName] = useState("");
@@ -20,6 +21,7 @@ const RegisterForm = ({ onOpenModal, handleError }) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        //const uid = user.uid
         if (user) {
           navigate("/login");
         }
@@ -66,7 +68,7 @@ const RegisterForm = ({ onOpenModal, handleError }) => {
       />
       <label htmlFor="password">Contraseña</label>
       <input
-        placeholder="password"
+        placeholder="******"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
@@ -131,7 +133,7 @@ const LoginForm = ({ onOpenModal, handleError }) => {
       />
       <label htmlFor="password">Contraseña</label>
       <input
-        placeholder="password"
+        placeholder="******"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />

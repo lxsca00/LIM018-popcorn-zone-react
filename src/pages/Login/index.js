@@ -12,7 +12,7 @@ function Login() {
   return (
     <section className={style.login}>
       <LoginForm handleError={setError} onOpenModal={setModal}/>
-      <p>Ingresa con</p>
+      <p className={style.anotherSignIn}>Ingresa con</p>
       <div>
         <button> Google </button>
         <button> Facebook </button>

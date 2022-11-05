@@ -19,7 +19,7 @@ function Welcome() {
         Comparte opiniones, encuentra recomendaciones y reúnete con tus amigos
         para maratonear juntos.
       </p>
-      <p>Comienza ahora</p>
+      <p className={style.startNow}> Comienza ahora</p>
       {/*Enfasis en botón de registro*/}
       <div className={style.welcomeButtonContainer}>
         <button onClick={()=> navigate("/register")}>Registrate</button>
