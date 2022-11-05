@@ -5,6 +5,7 @@ import { Register } from './pages/Register';
 import { Login } from './pages/Login';
 import { Home } from './pages/Home';
 import { Profile } from './pages/Profile';
+import { Error404 } from './pages/Error';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="login" element={<Login/>}/>
       <Route path="home" element={<Home/>}/>
       <Route path="profile" element={<Profile/>}/>
+      <Route path="error" element={<Error404/>}/>
     </Routes>
     </BrowserRouter>
   );

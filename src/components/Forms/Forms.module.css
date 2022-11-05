@@ -5,6 +5,17 @@ form {
     align-items: center;
 }
 
-.buttonRegister {
-    background: aqua;
+form input {
+    width: 100%;
+    margin: 0.5rem 0;
+}
+
+form h1 {
+    color: var(--orange2);
+    align-self: flex-start;
+}
+
+.message {
+    font-size: 0.8rem;
+    margin: 0 0 1rem 0;
 }

@@ -6,3 +6,10 @@
     align-items: center;
     justify-content: center;
 }
+
+.goLogin {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    margin: 1rem 0;
+}

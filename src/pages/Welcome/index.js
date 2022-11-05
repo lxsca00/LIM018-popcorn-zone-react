@@ -1,10 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import style from "./Welcome.module.css";
+import cine from "../../assets/cinema.svg"
 
 function Welcome() {
+
+  let navigate = useNavigate()
+
   return (
     <section className={style.welcome}>
-      <img src="#" alt="popcorn-zone" />
+      <img src={cine} alt="popcorn-zone" />
       <h1>PopcornZone</h1>
       <p>
         ¡Bienvenido a la red social más popular de los amantes de películas y
@@ -17,8 +22,8 @@ function Welcome() {
       <p>Comienza ahora</p>
       {/*Enfasis en botón de registro*/}
       <div className={style.welcomeButtonContainer}>
-        <button>Registrate</button>
-        <button>Inicia sesión</button>
+        <button onClick={()=> navigate("/register")}>Registrate</button>
+        <button onClick={()=> navigate("/login")}>Inicia sesión</button>
       </div>
     </section>
   );

@@ -1,19 +1,8 @@
-img {
-    height: 40%;
-}
-
-.login {
+.error {
     height: 100vh;
     padding: 4rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.goRegister {
-    display: flex;
-    gap: 0.5rem;
-    font-size: 0.8rem;
-    margin: 1rem 0;
 }
