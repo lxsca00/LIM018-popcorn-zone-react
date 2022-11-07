@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./Header.module.css"
+import style from "./Header.module.css";
 
 function Header() {
   return (
@@ -9,8 +9,7 @@ function Header() {
         <h1>PopcornZone</h1>
       </div>
       <button>
-        <img src="#" alt="log-out" />
-        <p>Cerrar sesión</p>
+        <i class="fa-solid fa-power-off"></i>
       </button>
     </header>
   );

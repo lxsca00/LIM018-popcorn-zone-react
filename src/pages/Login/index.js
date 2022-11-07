@@ -13,7 +13,7 @@ function Login() {
     <section className={style.login}>
       <LoginForm handleError={setError} onOpenModal={setModal}/>
       <p className={style.anotherSignIn}>Ingresa con</p>
-      <div>
+      <div className={style.buttonContainer}>
         <button> Google </button>
         <button> Facebook </button>
       </div>

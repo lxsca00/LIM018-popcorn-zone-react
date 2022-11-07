@@ -1,7 +1,24 @@
 header {
     background: var(--orange2);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    height: 3rem;
+    padding: 0 1.5rem;
+}
+
+header button {
+    height: 70%;
+    border: 1.5px solid var(--white);
+    background: none;
+}
+
+header button i {
+    filter: invert();
 }
 
 .logoContainer {
