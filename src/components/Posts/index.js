@@ -9,7 +9,7 @@ function Post() {
         <p>correo@gmail.com</p>
       </div>
       <p className={style.postText}>Este es un post</p>
-      <div>
+      <div className={style.buttonContainer}>
         <button>Me gusta</button>
         <button>Comentar</button>
       </div>

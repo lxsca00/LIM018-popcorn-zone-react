@@ -1,9 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header";
 import { Post } from "../../components/Posts";
 import style from "./Home.module.css";
 
 function Home() {
+
+  let navigate = useNavigate()
+
   return (
     <section className={style.home}>
       <Header />
@@ -12,19 +16,18 @@ function Home() {
         <p>correo@gmail.com</p>
       </div>
       <h1>Este es el home</h1>
-      <button>Ver mi perfil</button>
+      <button onClick={() => navigate("/profile")}>Ver mi perfil</button>
       <div className={style.postForm}>
         <textarea
+          style={{resize: "none"}}
           name="post"
           id="comment"
-          minLength="4"
-          maxLength="600"
           rows="6"
           cols="12"
           placeholder="¿Qué nos quieres decir?"
         />
         <div className={style.buttonContainer}>
-          <button>Carga una imagen</button>
+          <button>Cargar imagen</button>
           <button>Compartir</button>
         </div>
       </div>

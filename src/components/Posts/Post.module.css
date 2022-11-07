@@ -23,3 +23,9 @@
 .postText {
     margin: 1rem 0;
 }
+
+.buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}

@@ -25,3 +25,7 @@
     justify-content: space-evenly;
     align-items: center;
 }
+
+.modalCard p {
+    margin: 1rem 0;
+}
