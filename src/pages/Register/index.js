@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import style from "./Register.module.css"
-import { RegisterForm } from "../../components/Forms";
+import { RegisterForm } from "../../components/Forms/RegisterForm";
 import { Modal } from "../../components/Modal";
 
 function Register() {
@@ -13,7 +13,6 @@ function Register() {
       <RegisterForm handleError={setError} onOpenModal={setModal}/>
       <div className={style.goLogin}>
         <p>¿Ya tienes cuenta?</p>
-        {/*Revisar react router aca*/}
         <a href="/login">Inicia sesión aquí</a>
       </div>
       <Modal state={modal} onChangeState={setModal} text={error}/>

@@ -11,3 +11,7 @@ img {
     align-items: center;
     justify-content: center;
 }
+
+.error p {
+    margin: 1rem
+}

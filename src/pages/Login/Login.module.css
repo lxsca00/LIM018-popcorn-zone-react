@@ -27,3 +27,7 @@ img {
     display: flex;
     gap: 1.5rem;
 }
+
+.buttonContainer button {
+    width: 3rem;
+}

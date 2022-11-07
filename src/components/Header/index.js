@@ -1,15 +1,33 @@
 import React from "react";
 import style from "./Header.module.css";
 
+import { getAuth, signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+ 
 function Header() {
+  let navigate = useNavigate();
+
+  const handleLogOut = (e) => {
+    e.preventDefault();
+
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log("Vuelve a intentarlo");
+      });
+  };
+
   return (
     <header>
       <div className={style.logoContainer}>
         <img src="#" alt="PopcornZone" />
         <h1>PopcornZone</h1>
       </div>
-      <button>
-        <i class="fa-solid fa-power-off"></i>
+      <button onClick={handleLogOut}>
+        <i className="fa-solid fa-power-off"></i>
       </button>
     </header>
   );

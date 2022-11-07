@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { LoginForm } from "../../components/Forms";
+import { LoginForm } from "../../components/Forms/LoginForm";
 import style from "./Login.module.css";
 import login from "../../assets/login.svg";
 import { Modal } from "../../components/Modal";
@@ -52,9 +52,13 @@ function Login() {
       <LoginForm handleError={setError} onOpenModal={setModal} />
       <p className={style.anotherSignIn}>Ingresa con</p>
       <div className={style.buttonContainer}>
-        <button onClick={handleGoogleLogin}> Google </button>
+        <button onClick={handleGoogleLogin}>
+        <i className="fa-brands fa-google"></i>
+        </button>
         {/*Add a upcoming function modal */}
-        <button> Facebook </button>
+        <button>
+        <i className="fa-brands fa-facebook-f"></i>
+        </button>
       </div>
       <div className={style.goRegister}>
         <p>¿No tienes cuenta?</p>
