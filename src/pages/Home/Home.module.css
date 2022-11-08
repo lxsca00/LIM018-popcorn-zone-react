@@ -8,16 +8,3 @@
     overflow-y: auto;
 }
 
-.currentUser {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.pic {
-    background: var(--gray);
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-}
-

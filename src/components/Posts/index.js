@@ -9,6 +9,9 @@ function Post() {
         <p>correo@gmail.com</p>
       </div>
       <p className={style.postText}>Este es un post</p>
+      <hr></hr>
+      <p>Aquí cuento los likes</p>
+      <hr></hr>
       <div className={style.buttonContainer}>
         <button>Me gusta</button>
         <button>Comentar</button>

@@ -9,7 +9,65 @@
 
 .pic {
     background: var(--gray);
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
+    margin: 1rem 0;
     border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.pic img {
+    border-radius: 100%;
+    width: 85%;
+    height: auto;
+}
+
+.userLocation {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.containerDescription {
+    background: purple;
+    width: 100%;
+    height: 20%;
+    border-radius: 0.25rem;
+    margin: 1rem 0 0.5rem 0;
+}
+
+.info {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.infoContainer {
+    background: blue;
+    width: 50%;
+    border-radius: 0.25rem;
+    margin: 0.5rem 0 1rem 0;
+}
+
+.containerDescription, .infoContainer {
+    padding: 1rem;
+}
+
+.emailUser {
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+.infoContainer p:first-child {
+    font-weight: 700;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }

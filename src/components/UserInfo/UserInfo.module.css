@@ -7,17 +7,17 @@
 
 .pic {
     background: var(--gray);
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .pic img {
     border-radius: 100%;
-    width: 80%;
+    width: 85%;
     height: auto;
 }
 
