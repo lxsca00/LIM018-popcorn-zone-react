@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-} from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import style from "./Forms.module.css";
+import { db, auth } from "../../firebase/firebase";
+import { setDoc, doc } from "firebase/firestore";
 
 const RegisterForm = ({ onOpenModal, handleError }) => {
   const [name, setName] = useState("");
@@ -15,12 +14,16 @@ const RegisterForm = ({ onOpenModal, handleError }) => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
         const user = userCredential.user;
-        //const uid = user.uid
+        const uid = user.uid;
         if (user) {
+          await setDoc(doc(db, "users", uid), {
+            name,
+            email,
+            password,
+          });
           navigate("/login");
         }
       })
@@ -66,6 +69,7 @@ const RegisterForm = ({ onOpenModal, handleError }) => {
       />
       <label htmlFor="password">Contraseña</label>
       <input
+        type="password"
         placeholder="******"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
@@ -76,6 +80,5 @@ const RegisterForm = ({ onOpenModal, handleError }) => {
     </form>
   );
 };
-
 
 export { RegisterForm };

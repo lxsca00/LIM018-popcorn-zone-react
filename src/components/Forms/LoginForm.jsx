@@ -59,7 +59,9 @@ const LoginForm = ({ onOpenModal, handleError }) => {
       <input
         placeholder="******"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => setPassword(e.target.value)
+        }
+        type="password"
       />
       <button type="submit">Ingresar</button>
     </form>
