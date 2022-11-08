@@ -1,0 +1,27 @@
+.currentUser {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.pic {
+    background: var(--gray);
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pic img {
+    border-radius: 100%;
+    width: 80%;
+    height: auto;
+}
+
+.userData p:last-child {
+    font-size: 0.9rem;
+    color: var(--gray);
+}
