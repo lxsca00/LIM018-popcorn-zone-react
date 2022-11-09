@@ -16,7 +16,7 @@ const PostForm = ({ uid, email, name }) => {
       datePosted: Timestamp.fromDate(new Date()),
     });
     //Insertar modal de que si se subió el post
-    setPost("")
+    setPost("");
   };
 
   return (
@@ -31,7 +31,9 @@ const PostForm = ({ uid, email, name }) => {
           onChange={(e) => setPost(e.target.value)}
         />
         <div className={style.buttonContainer}>
-          <button>Cargar imagen</button>
+          <button className={style.imageButton}>
+            <i className="fa-solid fa-image"></i>
+          </button>
           <button onClick={() => postSomething(post)}>Compartir</button>
         </div>
       </div>

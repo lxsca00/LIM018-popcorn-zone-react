@@ -29,3 +29,9 @@
 .modalCard p {
     margin: 1rem 0;
 }
+
+.buttonModal {
+    background: var(--orange2);
+    border: none;
+    color: var(--white);
+}

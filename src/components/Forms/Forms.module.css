@@ -11,9 +11,9 @@ form input {
     padding: 0.5rem;
     outline: none;
     border-radius: 0;
-    background: var(--black);
+    background: none;
     border-bottom: 1px solid var(--gray);
-    color: var(--white);
+    color: var(--white); /*Cambiar pq no se ve en los modales*/
 }
 
 form h1 {
@@ -29,6 +29,10 @@ form label {
 
 form button {
     margin: 1rem;
+}
+
+textarea {
+    width: 100%;
 }
 
 .message {
@@ -51,4 +55,15 @@ form button {
     display: flex;
     justify-content: space-between;
     margin: 0.5rem 0 0 0;
+}
+
+.imageButton {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: var(--orange1);
+}
+
+.imageButton i {
+    filter: invert();
 }

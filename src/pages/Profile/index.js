@@ -6,6 +6,7 @@ import { Modal } from "../../components/Modal";
 import style from "./Profile.module.css";
 //import avatar from "../../assets/avatar.png";
 import { UserInfo } from "../../components/UserInfo";
+import { EditProfile } from "../../components/Forms/EditProfile";
 
 function Profile() {
   const [modal, setModal] = useState(false)
@@ -55,7 +56,9 @@ function Profile() {
       <button onClick={() => navigate("/home")}>Volver al muro</button>
       </div>
       
-      <Modal text={"Modal para editar"} state={modal} onChangeState={setModal}></Modal>
+      <Modal state={modal} onChangeState={setModal}>
+        <EditProfile></EditProfile>
+      </Modal>
     </section>
   );
 }

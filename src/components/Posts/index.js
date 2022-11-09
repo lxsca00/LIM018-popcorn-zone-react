@@ -10,8 +10,11 @@ function Post({ email, text }) {
       </div>
       <p className={style.postText}>{text}</p>
       <hr></hr>
-      <i className="fa-solid fa-heart"></i>
-      <p>0</p>
+      <div className={style.likeCounter}>
+        <i className="fa-solid fa-heart"></i>
+        <p>0</p>
+      </div>
+
       <hr></hr>
       <div className={style.buttonContainer}>
         <button>Me gusta</button>
@@ -34,8 +37,10 @@ function PostWithMenu({ email, text, onEdit, onDelete }) {
       </div>
       <p className={style.postText}>{text}</p>
       <hr></hr>
-      <i className="fa-solid fa-heart"></i>
-      <p>0</p>
+      <div className={style.likeCounter}>
+        <i className="fa-solid fa-heart"></i>
+        <p>0</p>
+      </div>
       <hr></hr>
       <div className={style.buttonContainer}>
         <button>Me gusta</button>

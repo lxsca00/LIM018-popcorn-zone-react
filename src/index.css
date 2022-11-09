@@ -22,9 +22,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-input {
+input, textarea {
   font-family: 'Lato', sans-serif;
-  background: #e2e2e2;
+  background: var(--white);
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;

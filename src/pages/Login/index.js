@@ -64,7 +64,9 @@ function Login() {
         <a href="/register">Regístrate aquí</a>
       </div>
       <img src={login} alt="login" />
-      <Modal state={modal} onChangeState={setModal} text={error} />
+      <Modal state={modal} onChangeState={setModal}>
+        <p>{error}</p>
+      </Modal>
     </section>
   );
 }

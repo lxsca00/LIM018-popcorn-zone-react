@@ -8,6 +8,8 @@ import { PostForm } from "../../components/Forms/PostForm";
 import { UserInfo } from "../../components/UserInfo";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { Modal } from "../../components/Modal";
+import { EditPost } from "../../components/Forms/EditPost";
+import { DeletePost } from "../../components/Forms/DeletePost";
 
 function Home() {
   let navigate = useNavigate();
@@ -57,16 +59,12 @@ function Home() {
           <Post key={index} email={post.email} text={post.post} />
         )
       )}
-      <Modal
-        state={modalEdit}
-        onChangeState={setModalEdit}
-        text={"Modal de editar post"}
-      />
-      <Modal
-        state={modalDelete}
-        onChangeState={setModalDelete}
-        text={"Modal de eliminar post"}
-      />
+      <Modal state={modalEdit} onChangeState={setModalEdit}>
+        <EditPost></EditPost>
+      </Modal>
+      <Modal state={modalDelete} onChangeState={setModalDelete}>
+        <DeletePost></DeletePost>
+      </Modal>
     </section>
   );
 }
