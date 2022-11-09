@@ -3,7 +3,7 @@ import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 import style from "./Forms.module.css";
 
-const PostForm = ({ uid, email, name }) => {
+const PostForm = ({ uid, email, name, onNewFunction }) => {
   const [post, setPost] = useState("");
 
   const postSomething = (post) => {
@@ -31,7 +31,7 @@ const PostForm = ({ uid, email, name }) => {
           onChange={(e) => setPost(e.target.value)}
         />
         <div className={style.buttonContainer}>
-          <button className={style.imageButton}>
+          <button className={style.imageButton} onClick={() => onNewFunction(true)}>
             <i className="fa-solid fa-image"></i>
           </button>
           <button onClick={() => postSomething(post)}>Compartir</button>

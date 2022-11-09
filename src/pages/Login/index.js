@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import { LoginForm } from "../../components/Forms/LoginForm";
 import style from "./Login.module.css";
 import login from "../../assets/login.svg";
-import { Modal } from "../../components/Modal";
+import { Modal, UpcomingModal } from "../../components/Modal";
 
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { db } from "../../firebase/firebase";
-import { auth } from "../../firebase/firebase";
+import { db, auth } from "../../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 import { setDoc, doc } from "firebase/firestore";
 
@@ -44,6 +43,7 @@ function Login() {
   };
 
   const [modal, setModal] = useState(false);
+  const [upcomingModal, setUpcomingModal] = useState(false);
   const [error, setError] = useState("este es un error");
 
   return (
@@ -55,7 +55,7 @@ function Login() {
           <i className="fa-brands fa-google"></i>
         </button>
         {/*Add a upcoming function modal */}
-        <button>
+        <button onClick={() => setUpcomingModal(true)}>
           <i className="fa-brands fa-facebook-f"></i>
         </button>
       </div>
@@ -67,6 +67,7 @@ function Login() {
       <Modal state={modal} onChangeState={setModal}>
         <p>{error}</p>
       </Modal>
+      <UpcomingModal state={upcomingModal} onChangeState={setUpcomingModal} />
     </section>
   );
 }
