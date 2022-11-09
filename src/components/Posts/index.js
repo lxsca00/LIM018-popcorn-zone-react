@@ -1,11 +1,29 @@
-import { deleteDoc, doc, updateDoc } from "firebase/firestore";
+import { deleteDoc, doc, getDoc, updateDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import { db } from "../../firebase/firebase";
+import { DeletePost } from "../Forms/DeletePost";
 import { EditPost } from "../Forms/EditPost";
 import { Modal } from "../Modal";
+import { auth } from "../../firebase/firebase";
 import style from "./Post.module.css";
 
-function Post({ email, text }) {
+function Post({ email, text, id, likes }) {
+  const uid = auth.currentUser.uid;
+  //Se comparte, luego mover al Home.js
+
+  const handleLike = async () => {
+    const docRef = doc(db, "posts", id);
+    const docSnap = await getDoc(docRef);
+    const postLikes = docSnap.data().likes;
+    return postLikes.includes(uid)
+      ? updateDoc(docRef, {
+          likes: postLikes.filter((item) => item !== uid),
+        })
+      : updateDoc(docRef, {
+          likes: [...postLikes, uid],
+        });
+  };
+
   return (
     <div className={style.postBody}>
       <div className={style.containerUser}>
@@ -16,33 +34,49 @@ function Post({ email, text }) {
       <hr></hr>
       <div className={style.likeCounter}>
         <i className="fa-solid fa-heart"></i>
-        <p>0</p>
+        <p>{likes.length}</p>
       </div>
 
       <hr></hr>
       <div className={style.buttonContainer}>
-        <button>Me gusta</button>
+        <button onClick={handleLike}>Me gusta</button>
         <button>Comentar</button>
       </div>
     </div>
   );
 }
 
-function PostWithMenu({ email, text, id, onDelete }) {
-
+function PostWithMenu({ email, text, id, likes }) {
   const [modalEdit, setModalEdit] = useState(false);
+  const [modalDelete, setModalDelete] = useState(false);
 
-  const handleDelete = () => {
+  const uid = auth.currentUser.uid;
+
+  const handleDelete = (e) => {
+    e.preventDefault();
     deleteDoc(doc(db, "posts", id));
   };
 
   const handleEdit = async (e, newPost) => {
     e.preventDefault();
-    const docRef = doc(db, "posts", id)
+    const docRef = doc(db, "posts", id);
     await updateDoc(docRef, {
       post: newPost,
     });
-    setModalEdit(false)
+    setModalEdit(false);
+  };
+
+  const handleLike = async () => {
+    const docRef = doc(db, "posts", id);
+    const docSnap = await getDoc(docRef);
+    const postLikes = docSnap.data().likes;
+    return postLikes.includes(uid)
+      ? updateDoc(docRef, {
+          likes: postLikes.filter((item) => item !== uid),
+        })
+      : updateDoc(docRef, {
+          likes: [...postLikes, uid],
+        });
   };
 
   return (
@@ -53,23 +87,26 @@ function PostWithMenu({ email, text, id, onDelete }) {
           <p>{email}</p>
         </div>
         <div>
-          <button onClick={() => handleDelete()}>Borrar</button>
+          <button onClick={() => setModalDelete(true)}>Borrar</button>
           <button onClick={() => setModalEdit(true)}>Editar</button>
         </div>
         <p className={style.postText}>{text}</p>
         <hr></hr>
         <div className={style.likeCounter}>
           <i className="fa-solid fa-heart"></i>
-          <p>0</p>
+          <p>{likes.length}</p>
         </div>
         <hr></hr>
         <div className={style.buttonContainer}>
-          <button>Me gusta</button>
+          <button onClick={handleLike}>Me gusta</button>
           <button>Comentar</button>
         </div>
       </div>
       <Modal state={modalEdit} onChangeState={setModalEdit}>
         <EditPost text={text} handleEdit={handleEdit}></EditPost>
+      </Modal>
+      <Modal state={modalDelete} onChangeState={setModalDelete}>
+        <DeletePost handleDelete={handleDelete}></DeletePost>
       </Modal>
     </>
   );

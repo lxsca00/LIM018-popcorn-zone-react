@@ -7,8 +7,7 @@ import style from "./Home.module.css";
 import { PostForm } from "../../components/Forms/PostForm";
 import { UserInfo } from "../../components/UserInfo";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
-import { Modal, UpcomingModal } from "../../components/Modal";
-import { DeletePost } from "../../components/Forms/DeletePost";
+import { UpcomingModal } from "../../components/Modal";
 
 function Home() {
   let navigate = useNavigate();
@@ -16,7 +15,6 @@ function Home() {
   const [email, setEmail] = useState("");
   //const [pic, setPic] = useState(avatar)
   const [allPosts, setAllPosts] = useState([]);
-  const [modalDelete, setModalDelete] = useState(false);
   const [upcomingModal, setUpcomingModal] = useState(false);
   const uid = auth.currentUser.uid;
 
@@ -44,23 +42,25 @@ function Home() {
         setEmail={setEmail}
       ></UserInfo>
       <button onClick={() => navigate("/profile")}>Ver mi perfil</button>
-      <PostForm uid={uid} email={email} name={name} onNewFunction={setUpcomingModal}/>
+      <PostForm
+        uid={uid}
+        email={email}
+        name={name}
+        onNewFunction={setUpcomingModal}
+      />
       {allPosts.map((post, index) =>
         post.uid === uid ? (
           <PostWithMenu
             key={index}
             email={post.email}
             text={post.post}
-            onDelete={setModalDelete}
             id={post.id}
+            likes={post.likes}
           />
         ) : (
-          <Post key={index} email={post.email} text={post.post} />
+          <Post key={index} id={post.id} email={post.email} text={post.post} likes={post.likes}/>
         )
       )}
-      <Modal state={modalDelete} onChangeState={setModalDelete}>
-        <DeletePost></DeletePost>
-      </Modal>
       <UpcomingModal state={upcomingModal} onChangeState={setUpcomingModal} />
     </section>
   );
