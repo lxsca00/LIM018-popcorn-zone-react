@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header";
 import { Post } from "../../components/Posts";
@@ -13,25 +13,21 @@ function Home() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   //const [pic, setPic] = useState(avatar)
-
+  const [allPosts, setAllPosts] = useState([]);
   const uid = auth.currentUser.uid;
 
-  
-
-  /*const onGetPosts = () => {
-    const user = auth.currentUser;
+  const getPosts = () => {
     const q = query(collection(db, "posts"), orderBy("datePosted", "desc"));
     onSnapshot(q, (querySnapshot) => {
-      querySnapshot.forEach((post) => {
-        posts.push(Object.assign(post.data()))
-      })
-      console.log(posts)
-    })
-    let posts = []
-  }
-  
+      const posts = [];
+      querySnapshot.forEach((doc) => posts.push({ ...doc.data(), id: doc.id }));
+      setAllPosts(posts);
+    });
+  };
 
-  onGetPosts()*/
+  useEffect(() => {
+    getPosts();
+  }, []);
 
   return (
     <section className={style.home}>
@@ -45,7 +41,9 @@ function Home() {
       ></UserInfo>
       <button onClick={() => navigate("/profile")}>Ver mi perfil</button>
       <PostForm uid={uid} email={email} name={name} />
-      <Post></Post>
+      {allPosts.map((post,index) => (
+        <Post key={index} email={post.email} text={post.post}></Post>
+      ))}
     </section>
   );
 }

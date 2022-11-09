@@ -22,7 +22,6 @@ const RegisterForm = ({ onOpenModal, handleError }) => {
           await setDoc(doc(db, "users", uid), {
             name,
             email,
-            password,
           });
           navigate("/login");
         }
