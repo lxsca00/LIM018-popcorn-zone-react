@@ -8,7 +8,6 @@ import { PostForm } from "../../components/Forms/PostForm";
 import { UserInfo } from "../../components/UserInfo";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { Modal, UpcomingModal } from "../../components/Modal";
-import { EditPost } from "../../components/Forms/EditPost";
 import { DeletePost } from "../../components/Forms/DeletePost";
 
 function Home() {
@@ -17,7 +16,6 @@ function Home() {
   const [email, setEmail] = useState("");
   //const [pic, setPic] = useState(avatar)
   const [allPosts, setAllPosts] = useState([]);
-  const [modalEdit, setModalEdit] = useState(false);
   const [modalDelete, setModalDelete] = useState(false);
   const [upcomingModal, setUpcomingModal] = useState(false);
   const uid = auth.currentUser.uid;
@@ -53,7 +51,6 @@ function Home() {
             key={index}
             email={post.email}
             text={post.post}
-            onEdit={setModalEdit}
             onDelete={setModalDelete}
             id={post.id}
           />
@@ -61,9 +58,6 @@ function Home() {
           <Post key={index} email={post.email} text={post.post} />
         )
       )}
-      <Modal state={modalEdit} onChangeState={setModalEdit}>
-        <EditPost></EditPost>
-      </Modal>
       <Modal state={modalDelete} onChangeState={setModalDelete}>
         <DeletePost></DeletePost>
       </Modal>
