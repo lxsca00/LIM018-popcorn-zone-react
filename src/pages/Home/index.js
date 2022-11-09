@@ -41,7 +41,9 @@ function Home() {
         email={email}
         setEmail={setEmail}
       ></UserInfo>
-      <button onClick={() => navigate("/profile")}>Ver mi perfil</button>
+      <button className={style.goProfile} onClick={() => navigate("/profile")}>
+      <i className="fa-solid fa-address-card"></i>
+        <p>Ver mi perfil</p></button>
       <PostForm
         uid={uid}
         email={email}

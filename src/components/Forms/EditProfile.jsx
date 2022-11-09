@@ -22,7 +22,7 @@ const EditProfile = () => {
       </select>
       <label>¿Cuáles son tus géneros preferidos?</label>
       <input></input>
-      <button>Actualizar</button>
+      <button className="secondaryButton">Actualizar</button>
     </form>
   );
 };

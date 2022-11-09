@@ -73,7 +73,7 @@ const RegisterForm = ({ onOpenModal, handleError }) => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button className={style.buttonRegister} type="submit">
+      <button className="mainButton" type="submit">
         Registrarme
       </button>
     </form>

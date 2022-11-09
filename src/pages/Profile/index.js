@@ -9,7 +9,7 @@ import { UserInfo } from "../../components/UserInfo";
 import { EditProfile } from "../../components/Forms/EditProfile";
 
 function Profile() {
-  const [modal, setModal] = useState(false)
+  const [modal, setModal] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const uid = auth.currentUser.uid;
@@ -38,24 +38,26 @@ function Profile() {
         <p>Worldwide</p>
       </div>
       <div className={style.containerDescription}>
-        <p>Aquí va la descripciónAquí va la descripciónAquí va la descripciónAquí va la descripción.</p>
+        <p>
+          Aquí va la descripciónAquí va la descripciónAquí va la descripciónAquí
+          va la descripción.
+        </p>
       </div>
       <section className={style.info}>
         <div className={style.infoContainer}>
           <p>Me gusta ver: </p>
-          <p>Aquí van las preferencias
-          </p>
+          <p>Documentales</p>
         </div>
         <div className={style.infoContainer}>
           <p>Mis generos favoritos: </p>
-          <p>Aquí van los géneros</p>
+          <p>Romance, drama y suspenso</p>
         </div>
       </section>
       <div className={style.buttonContainer}>
-        <button onClick={() => setModal(true)}>Editar perfil</button>
-      <button onClick={() => navigate("/home")}>Volver al muro</button>
+        <button className="secondaryButton" onClick={() => setModal(true)}>Editar perfil</button>
+        <button className="mainButton" onClick={() => navigate("/home")}>Volver al muro</button>
       </div>
-      
+
       <Modal state={modal} onChangeState={setModal}>
         <EditProfile></EditProfile>
       </Modal>

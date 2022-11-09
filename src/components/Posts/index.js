@@ -5,6 +5,7 @@ import { DeletePost } from "../Forms/DeletePost";
 import { EditPost } from "../Forms/EditPost";
 import { Modal } from "../Modal";
 import { auth } from "../../firebase/firebase";
+import avatar from "../../assets/avatar.png";
 import style from "./Post.module.css";
 
 function Post({ email, text, id, likes }) {
@@ -27,7 +28,9 @@ function Post({ email, text, id, likes }) {
   return (
     <div className={style.postBody}>
       <div className={style.containerUser}>
-        <div className={style.pic}></div>
+      <div className={style.pic}>
+            <img src={avatar} alt="user" />
+          </div>
         <p>{email}</p>
       </div>
       <p className={style.postText}>{text}</p>
@@ -39,8 +42,10 @@ function Post({ email, text, id, likes }) {
 
       <hr></hr>
       <div className={style.buttonContainer}>
-        <button onClick={handleLike}>Me gusta</button>
-        <button>Comentar</button>
+        <button className="mainButton" onClick={handleLike}>
+          Me gusta
+        </button>
+        <button className="secondaryButton">Comentar</button>
       </div>
     </div>
   );
@@ -83,7 +88,9 @@ function PostWithMenu({ email, text, id, likes }) {
     <>
       <div className={style.postBody}>
         <div className={style.containerUser}>
-          <div className={style.pic}></div>
+          <div className={style.pic}>
+            <img src={avatar} alt="user" />
+          </div>
           <p>{email}</p>
         </div>
         <div>
@@ -98,8 +105,10 @@ function PostWithMenu({ email, text, id, likes }) {
         </div>
         <hr></hr>
         <div className={style.buttonContainer}>
-          <button onClick={handleLike}>Me gusta</button>
-          <button>Comentar</button>
+          <button className="mainButton" onClick={handleLike}>
+            Me gusta
+          </button>
+          <button className="secondaryButton">Comentar</button>
         </div>
       </div>
       <Modal state={modalEdit} onChangeState={setModalEdit}>

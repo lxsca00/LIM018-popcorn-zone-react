@@ -25,3 +25,7 @@ header button i {
     display: flex;
     align-items: center;
 }
+
+.logoContainer img {
+    width: 3rem;
+}

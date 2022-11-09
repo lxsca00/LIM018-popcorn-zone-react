@@ -1,10 +1,18 @@
 img {
     height: 40%;
+    width: auto;
 }
 
 .login {
     height: 100vh;
     padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,6 +36,29 @@ img {
     gap: 1.5rem;
 }
 
-.buttonContainer button {
-    width: 3rem;
+
+.socialMedia {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    color: var(--white);
+}
+
+.socialMedia:first-child {
+    background: var(--orange1);
+}
+
+.socialMedia:last-child {
+    background: rgb(29, 29, 136);
+}
+
+@media screen and (min-width: 768px) {
+    .login{
+        flex-direction: row-reverse;
+        gap: 3rem
+    }
+
+    .login img {
+        height: 90%;
+    }
 }

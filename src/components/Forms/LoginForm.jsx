@@ -63,7 +63,7 @@ const LoginForm = ({ onOpenModal, handleError }) => {
         }
         type="password"
       />
-      <button type="submit">Ingresar</button>
+      <button type="submit" className="mainButton">Ingresar</button>
     </form>
   );
 };

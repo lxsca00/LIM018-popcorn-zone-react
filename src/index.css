@@ -46,3 +46,14 @@ button {
 button:hover {
   transform: scale(.9);
 }
+
+.mainButton {
+  background: var(--orange2);
+  color: var(--white);
+}
+
+.secondaryButton {
+  background: none;
+  border: 1px solid var(--orange2);
+  color: var(--orange2);
+}

@@ -5,7 +5,7 @@ const DeletePost = ({ handleDelete }) => {
     <>
       <p>Estas a punto de eliminar este post...</p>
       <p>¿Estás seguro?</p>
-      <button onClick={(e) => handleDelete(e)}>Eliminar</button>
+      <button className="secondaryButton" onClick={(e) => handleDelete(e)}>Eliminar</button>
     </>
   );
 };

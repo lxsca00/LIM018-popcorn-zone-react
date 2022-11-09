@@ -34,7 +34,7 @@ const PostForm = ({ uid, email, name, onNewFunction }) => {
           <button className={style.imageButton} onClick={() => onNewFunction(true)}>
             <i className="fa-solid fa-image"></i>
           </button>
-          <button onClick={() => postSomething(post)}>Compartir</button>
+          <button className="mainButton" onClick={() => postSomething(post)}>Compartir</button>
         </div>
       </div>
     </>

@@ -3,7 +3,7 @@ import style from "./Header.module.css";
 
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
- 
+
 function Header() {
   let navigate = useNavigate();
 
@@ -23,7 +23,7 @@ function Header() {
   return (
     <header>
       <div className={style.logoContainer}>
-        <img src="#" alt="PopcornZone" />
+      <img src="https://i.pinimg.com/originals/54/cc/e0/54cce0449cfd4414fdc19b068a97e00a.png" alt="popcorn-zone" />
         <h1>PopcornZone</h1>
       </div>
       <button onClick={handleLogOut}>

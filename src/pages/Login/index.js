@@ -38,7 +38,6 @@ function Login() {
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
       });
   };
 
@@ -48,21 +47,26 @@ function Login() {
 
   return (
     <section className={style.login}>
-      <LoginForm handleError={setError} onOpenModal={setModal} />
+      <div className={style.loginContainer}>
+        <LoginForm handleError={setError} onOpenModal={setModal} />
       <p className={style.anotherSignIn}>Ingresa con</p>
       <div className={style.buttonContainer}>
-        <button onClick={handleGoogleLogin}>
+        <button className={style.socialMedia} onClick={handleGoogleLogin}>
           <i className="fa-brands fa-google"></i>
+          <p>Google</p>
         </button>
-        {/*Add a upcoming function modal */}
-        <button onClick={() => setUpcomingModal(true)}>
+        <button className={style.socialMedia} onClick={() => setUpcomingModal(true)}>
           <i className="fa-brands fa-facebook-f"></i>
+          <p>Facebook</p>
         </button>
       </div>
       <div className={style.goRegister}>
         <p>¿No tienes cuenta?</p>
         <a href="/register">Regístrate aquí</a>
       </div>
+      </div>
+      
+
       <img src={login} alt="login" />
       <Modal state={modal} onChangeState={setModal}>
         <p>{error}</p>
