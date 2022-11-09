@@ -2,6 +2,7 @@ import React from "react";
 
 const EditProfile = () => {
   // https://www.geeksforgeeks.org/how-to-use-html-select-tag-in-reactjs/
+  // https://www.youtube.com/watch?v=Y9-UkL6ent4&t=709s
   return (
     <form>
       <h3>Edita tu perfil</h3>

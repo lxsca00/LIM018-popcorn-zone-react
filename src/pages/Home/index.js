@@ -55,6 +55,7 @@ function Home() {
             text={post.post}
             onEdit={setModalEdit}
             onDelete={setModalDelete}
+            id={post.id}
           />
         ) : (
           <Post key={index} email={post.email} text={post.post} />

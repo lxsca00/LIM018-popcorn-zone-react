@@ -1,4 +1,6 @@
+import { deleteDoc, doc } from "firebase/firestore";
 import React from "react";
+import { db } from "../../firebase/firebase";
 import style from "./Post.module.css";
 
 function Post({ email, text }) {
@@ -24,7 +26,13 @@ function Post({ email, text }) {
   );
 }
 
-function PostWithMenu({ email, text, onEdit, onDelete }) {
+function PostWithMenu({ email, text, onEdit, id, onDelete }) {
+
+
+  const eventDelete = () => {
+    deleteDoc(doc(db, "posts", id))
+  }
+
   return (
     <div className={style.postBody}>
       <div className={style.containerUser}>
@@ -32,7 +40,7 @@ function PostWithMenu({ email, text, onEdit, onDelete }) {
         <p>{email}</p>
       </div>
       <div>
-        <button onClick={() => onDelete(true)}>Borrar</button>
+        <button onClick={() => eventDelete()}>Borrar</button>
         <button onClick={() => onEdit(true)}>Editar</button>
       </div>
       <p className={style.postText}>{text}</p>

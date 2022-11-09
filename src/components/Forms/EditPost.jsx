@@ -1,6 +1,9 @@
 import React from "react";
 
 const EditPost = () => {
+
+    
+
     return(
         <form>
             <h3>Edita tu post</h3>
