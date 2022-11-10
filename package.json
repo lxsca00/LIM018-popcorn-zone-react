@@ -1,6 +1,7 @@
 {
   "name": "lim018-popcorn-zone",
   "version": "0.1.0",
+  "homepage": "http://lxsca00.github.io/popcorn-zone-react",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
@@ -20,7 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -41,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^4.0.0",
     "react-router-dom": "^6.4.3"
   }
 }
