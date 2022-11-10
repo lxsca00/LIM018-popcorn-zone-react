@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/popcorn-zone-react/static/css/main.6af5e1af.css",
-    "main.js": "/popcorn-zone-react/static/js/main.ddebf3dc.js",
+    "main.js": "/popcorn-zone-react/static/js/main.a3d5c058.js",
     "static/media/avatar.png": "/popcorn-zone-react/static/media/avatar.3a614f4c231447b5ae52.png",
     "static/media/404.svg": "/popcorn-zone-react/static/media/404.cfca331f92e0aeb8792236287b34f87f.svg",
     "static/media/upcoming.svg": "/popcorn-zone-react/static/media/upcoming.91e098142cc09940ca8a04e23aef7443.svg",
@@ -9,10 +9,10 @@
     "static/media/login.svg": "/popcorn-zone-react/static/media/login.618bfee10ebb9ebcc120f62d3f4ae53e.svg",
     "index.html": "/popcorn-zone-react/index.html",
     "main.6af5e1af.css.map": "/popcorn-zone-react/static/css/main.6af5e1af.css.map",
-    "main.ddebf3dc.js.map": "/popcorn-zone-react/static/js/main.ddebf3dc.js.map"
+    "main.a3d5c058.js.map": "/popcorn-zone-react/static/js/main.a3d5c058.js.map"
   },
   "entrypoints": [
     "static/css/main.6af5e1af.css",
-    "static/js/main.ddebf3dc.js"
+    "static/js/main.a3d5c058.js"
   ]
 }
