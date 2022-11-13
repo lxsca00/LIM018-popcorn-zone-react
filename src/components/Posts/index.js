@@ -28,9 +28,9 @@ function Post({ email, text, id, likes }) {
   return (
     <div className={style.postBody}>
       <div className={style.containerUser}>
-      <div className={style.pic}>
-            <img src={avatar} alt="user" />
-          </div>
+        <div className={style.pic}>
+          <img src={avatar} alt="user" />
+        </div>
         <p>{email}</p>
       </div>
       <p className={style.postText}>{text}</p>
@@ -93,7 +93,7 @@ function PostWithMenu({ email, text, id, likes }) {
           </div>
           <p>{email}</p>
         </div>
-        <div>
+        <div className={style.containerEventButtons}>
           <button onClick={() => setModalDelete(true)}>Borrar</button>
           <button onClick={() => setModalEdit(true)}>Editar</button>
         </div>

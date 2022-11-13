@@ -55,10 +55,10 @@ img {
 @media screen and (min-width: 768px) {
     .login{
         flex-direction: row-reverse;
-        gap: 3rem
+        justify-content: space-around;
     }
 
     .login img {
-        height: 90%;
+        height: 80%;
     }
 }

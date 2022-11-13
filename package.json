@@ -1,7 +1,6 @@
 {
   "name": "lim018-popcorn-zone",
   "version": "0.1.0",
-  "homepage": "http://lxsca00.github.io/popcorn-zone-react",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.0",

@@ -57,3 +57,16 @@ hr {
   justify-content: flex-end;
   gap: 1rem;
 }
+
+.containerEventButtons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  margin: 0.25rem 2.6rem
+}
+
+.containerEventButtons button {
+  border: 1px solid var(--orange1);
+  background: none;
+  color: var(--orange1);
+}

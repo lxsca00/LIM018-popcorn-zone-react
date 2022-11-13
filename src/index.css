@@ -57,3 +57,7 @@ button:hover {
   border: 1px solid var(--orange2);
   color: var(--orange2);
 }
+
+.modalButton {
+  margin: 0.5rem 0;
+}
