@@ -1,30 +1,32 @@
-import React from "react";
+import React, { useContext } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
-import style from "./UserInfo.module.css"
+import style from "./UserInfo.module.css";
 import avatar from "../../assets/avatar.png";
+import { UserContext } from "../../App";
 
-const UserInfo = ({name, setName, email, setEmail, uid}) => {
+const UserInfo = ({ uid }) => {
+  const context = useContext(UserContext);
 
   const getData = async () => {
     const docRef = doc(db, "users", uid);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-      setName(docSnap.data().name);
-      setEmail(docSnap.data().email);
+      context.setName(docSnap.data().name);
+      context.setEmail(docSnap.data().email);
     }
   };
 
-  getData()
+  getData();
 
   return (
     <div className={style.currentUser}>
       <div className={style.pic}>
-        <img src={avatar} alt={name} />
+        <img src={avatar} alt={context.name} />
       </div>
       <div className={style.userData}>
-        <p>{name}</p>
-        <p>{email}</p>
+        <p>{context.name}</p>
+        <p>{context.email}</p>
       </div>
     </div>
   );

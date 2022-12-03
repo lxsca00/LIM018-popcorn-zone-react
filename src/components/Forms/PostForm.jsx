@@ -2,9 +2,17 @@ import React, { useState } from "react";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 import style from "./Forms.module.css";
+import { useContext } from "react";
+import { UserContext } from "../../App";
 
-const PostForm = ({ uid, email, name, onNewFunction }) => {
+const PostForm = ({ uid, onNewFunction }) => {
+
+  const context = useContext(UserContext)
+
   const [post, setPost] = useState("");
+
+  const email = context.email;
+  const name = context.name
 
   const postSomething = (post) => {
     addDoc(collection(db, "posts"), {

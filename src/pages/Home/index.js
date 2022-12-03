@@ -11,8 +11,7 @@ import { UpcomingModal } from "../../components/Modal";
 
 function Home() {
   let navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+
   //const [pic, setPic] = useState(avatar)
   const [allPosts, setAllPosts] = useState([]);
   const [upcomingModal, setUpcomingModal] = useState(false);
@@ -34,22 +33,12 @@ function Home() {
   return (
     <section className={style.home}>
       <Header />
-      <UserInfo
-        uid={uid}
-        name={name}
-        setName={setName}
-        email={email}
-        setEmail={setEmail}
-      ></UserInfo>
+      <UserInfo uid={uid} />
       <button className={style.goProfile} onClick={() => navigate("/profile")}>
-      <i className="fa-solid fa-address-card"></i>
-        <p>Ver mi perfil</p></button>
-      <PostForm
-        uid={uid}
-        email={email}
-        name={name}
-        onNewFunction={setUpcomingModal}
-      />
+        <i className="fa-solid fa-address-card"></i>
+        <p>Ver mi perfil</p>
+      </button>
+      <PostForm uid={uid} onNewFunction={setUpcomingModal} />
       {allPosts.map((post, index) =>
         post.uid === uid ? (
           <PostWithMenu
@@ -60,7 +49,13 @@ function Home() {
             likes={post.likes}
           />
         ) : (
-          <Post key={index} id={post.id} email={post.email} text={post.post} likes={post.likes}/>
+          <Post
+            key={index}
+            id={post.id}
+            email={post.email}
+            text={post.post}
+            likes={post.likes}
+          />
         )
       )}
       <UpcomingModal state={upcomingModal} onChangeState={setUpcomingModal} />

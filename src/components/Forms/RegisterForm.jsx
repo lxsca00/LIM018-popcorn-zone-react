@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import style from "./Forms.module.css";
 import { db, auth } from "../../firebase/firebase";
 import { setDoc, doc } from "firebase/firestore";
+import { useContext } from "react";
+import { UserContext } from "../../App";
 
 const RegisterForm = ({ onOpenModal, handleError }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const context = useContext(UserContext);
 
   let navigate = useNavigate();
 
   const handleRegister = (e) => {
+    const email = context.email;
+    const password = context.password;
+    const name = context.name;
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
@@ -45,8 +48,8 @@ const RegisterForm = ({ onOpenModal, handleError }) => {
             handleError("Algo ocurrió, vuelve a intentarlo");
             break;
         }
-        setEmail("");
-        setPassword("");
+        context.setEmail("");
+        context.setPassword("");
       });
   };
 
@@ -57,21 +60,21 @@ const RegisterForm = ({ onOpenModal, handleError }) => {
       <label htmlFor="name">Nombre</label>
       <input
         placeholder="John Doe"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        value={context.name}
+        onChange={(e) => context.setName(e.target.value)}
       />
       <label htmlFor="email">Correo electrónico</label>
       <input
         placeholder="email@example.com"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        value={context.email}
+        onChange={(e) => context.setEmail(e.target.value)}
       />
       <label htmlFor="password">Contraseña</label>
       <input
         type="password"
         placeholder="******"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        value={context.password}
+        onChange={(e) => context.setPassword(e.target.value)}
       />
       <button className="mainButton" type="submit">
         Registrarme

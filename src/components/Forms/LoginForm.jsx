@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import style from "./Forms.module.css";
+import { useContext } from "react";
+import { UserContext } from "../../App";
 
 const LoginForm = ({ onOpenModal, handleError }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const context = useContext(UserContext);
 
   let navigate = useNavigate();
 
@@ -14,7 +15,7 @@ const LoginForm = ({ onOpenModal, handleError }) => {
 
     const auth = getAuth();
 
-    signInWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, context.email, context.password)
       .then((userCredential) => {
         const user = userCredential.user;
         if (user) {
@@ -40,8 +41,8 @@ const LoginForm = ({ onOpenModal, handleError }) => {
             handleError("Algo ocurrió, vuelve a intentarlo");
             break;
         }
-        setEmail("");
-        setPassword("");
+        context.setEmail("");
+        context.setPassword("");
       });
   };
 
@@ -52,18 +53,19 @@ const LoginForm = ({ onOpenModal, handleError }) => {
       <label htmlFor="email">Correo electrónico</label>
       <input
         placeholder="email@example.com"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        value={context.email}
+        onChange={(e) => context.setEmail(e.target.value)}
       />
       <label htmlFor="password">Contraseña</label>
       <input
         placeholder="******"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)
-        }
+        value={context.password}
+        onChange={(e) => context.setPassword(e.target.value)}
         type="password"
       />
-      <button type="submit" className="mainButton">Ingresar</button>
+      <button type="submit" className="mainButton">
+        Ingresar
+      </button>
     </form>
   );
 };

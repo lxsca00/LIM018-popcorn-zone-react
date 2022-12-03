@@ -1,21 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../../firebase/firebase";
 import { Header } from "../../components/Header";
 import { Modal } from "../../components/Modal";
 import style from "./Profile.module.css";
+import avatar from "../../assets/avatar.png";
 import { EditProfile } from "../../components/Forms/EditProfile";
 import { doc, onSnapshot } from "firebase/firestore";
+import { UserContext } from "../../App";
 
 function Profile() {
+  const context = useContext(UserContext);
+
   const [modal, setModal] = useState(false);
-  const [profile, setProfile] = useState("")
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const [country, setCountry] = useState("Worldwide");
-  const [description, setDescription] = useState("");
-  const [preferences, setPreferences] = useState("");
-  const [genres, setGenres] = useState("");
+  const [description, setDescription] = useState("¡Cuéntanos más sobre ti!");
+  const [preference, setPreference] = useState("¿Qué sueles ver?");
+  const [genres, setGenres] = useState("¿Qué géneros prefieres?");
   const uid = auth.currentUser.uid;
 
   //Creo que ya se debe usar useContext
@@ -27,13 +28,14 @@ function Profile() {
       doc(db, "users", uid),
       { includeMetadataChanges: true },
       (user) => {
-        setEmail(user.data().email);
-        setName(user.data().name);
-        setDescription(user.data().description);
-        setCountry(user.data().country);
-        setPreferences(user.data().preferences)
-        setGenres(user.data().genres)
-        setProfile(user.data().photo)
+        context.setEmail(user.data().email);
+        context.setName(user.data().name);
+        if (user.data().description !== undefined) {
+          setCountry(user.data().country);
+          setDescription(user.data().description);
+          setPreference(user.data().preference);
+          setGenres(user.data().genres);
+        }
       }
     );
   };
@@ -43,16 +45,11 @@ function Profile() {
   return (
     <section className={style.profile}>
       <Header />
-      {/*<img src={profile} alt={name}></img>*/}
-      <p>{name}</p>
-      <p>{email}</p>
-      {/*<UserInfo
-        uid={uid}
-        name={name}
-        setName={setName}
-        email={email}
-        setEmail={setEmail}
-      ></UserInfo>*/}
+      <div className={style.pic}>
+        <img src={avatar} alt={context.name} />
+      </div>
+      <p>{context.name}</p>
+      <p>{context.email}</p>
       <div className={style.userLocation}>
         <i className="fa-solid fa-location-dot"></i>
         <p>{country}</p>
@@ -63,7 +60,7 @@ function Profile() {
       <section className={style.info}>
         <div className={style.infoContainer}>
           <p>Me gusta ver: </p>
-          <p>{preferences}</p>
+          <p>{preference}</p>
         </div>
         <div className={style.infoContainer}>
           <p>Mis generos favoritos: </p>
@@ -80,9 +77,7 @@ function Profile() {
       </div>
 
       <Modal state={modal} onChangeState={setModal}>
-        <EditProfile
-          uid={uid}
-        ></EditProfile>
+        <EditProfile uid={uid}></EditProfile>
       </Modal>
     </section>
   );
