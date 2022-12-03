@@ -13,13 +13,11 @@ function Profile() {
   const context = useContext(UserContext);
 
   const [modal, setModal] = useState(false);
-  const [country, setCountry] = useState("Worldwide");
   const [description, setDescription] = useState("¡Cuéntanos más sobre ti!");
-  const [preference, setPreference] = useState("¿Qué sueles ver?");
-  const [genres, setGenres] = useState("¿Qué géneros prefieres?");
+  const [genres, setGenres] = useState("¿Qué sueles ver?");
+  const [country, setCountry] = useState("Selecciona tu país");
+  const [preference, setPreference] = useState("¿Qué prefieres ver?");
   const uid = auth.currentUser.uid;
-
-  //Creo que ya se debe usar useContext
 
   let navigate = useNavigate();
 
@@ -77,7 +75,18 @@ function Profile() {
       </div>
 
       <Modal state={modal} onChangeState={setModal}>
-        <EditProfile uid={uid}></EditProfile>
+        <EditProfile
+          uid={uid}
+          setModal={setModal}
+          description={description}
+          country={country}
+          preference={preference}
+          genres={genres}
+          setCountry={setCountry}
+          setPreference={setPreference}
+          setGenres={setGenres}
+          setDescription={setDescription}
+        ></EditProfile>
       </Modal>
     </section>
   );

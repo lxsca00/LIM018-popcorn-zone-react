@@ -14,7 +14,14 @@ function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const values = { name, setName, email, setEmail, password, setPassword };
+  const values = {
+    name,
+    setName,
+    email,
+    setEmail,
+    password,
+    setPassword,
+  };
 
   return (
     <UserContext.Provider value={values}>

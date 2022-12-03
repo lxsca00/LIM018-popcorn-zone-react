@@ -1,29 +1,42 @@
-import React, { useState } from "react";
+import React from "react";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 import { preferenceOptions, countryOptions } from "./data-select.js";
 import style from "./Forms.module.css";
 
-const EditProfile = ({ uid }) => {
+const EditProfile = ({
+  uid,
+  description,
+  genres,
+  country,
+  preference,
+  setCountry,
+  setPreference,
+  setGenres,
+  setDescription,
+  setModal
+}) => {
   // Select en react
   // https://www.geeksforgeeks.org/how-to-use-html-select-tag-in-reactjs/
   // https://www.youtube.com/watch?v=Y9-UkL6ent4&t=709s
 
-  const [description, setDescription] = useState("");
-  const [genres, setGenres] = useState("");
-  const [country, setCountry] = useState("Selecciona tu país")
-  const [preference, setPreference] = useState("¿Qué prefieres ver?")
+  const handleCountry = (e) => {
+    setCountry(e.target.value);
+  };
 
-  console.log(country);
-
-  const handleCountry = (e) => {setCountry(e.target.value)}
-
-  const handlePreferences = (e) => {setPreference(e.target.value)}
+  const handlePreferences = (e) => {
+    setPreference(e.target.value);
+  };
 
   const handleChange = (e) => {
     e.preventDefault();
-    updateDoc(doc(db, "users", uid), { description, genres, country, preference });
-    console.log("Ok?");
+    updateDoc(doc(db, "users", uid), {
+      description,
+      genres,
+      country,
+      preference,
+    });
+    setModal(false)
   };
 
   return (
