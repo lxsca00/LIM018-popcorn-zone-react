@@ -17,7 +17,7 @@ import { UpcomingModal } from "../../components/Modal";
 
 function Home() {
   let navigate = useNavigate();
-  
+
   const [allPosts, setAllPosts] = useState([]);
   const [upcomingModal, setUpcomingModal] = useState(false);
   const uid = auth.currentUser.uid;
@@ -38,31 +38,38 @@ function Home() {
   return (
     <section className={style.home}>
       <Header />
-      <UserInfo uid={uid} />
-      <button className={style.goProfile} onClick={() => navigate("/profile")}>
-        <i className="fa-solid fa-address-card"></i>
-        <p>Ver mi perfil</p>
-      </button>
-      <PostForm uid={uid} onNewFunction={setUpcomingModal} />
-      {allPosts.map((post, index) =>
-        post.uid === uid ? (
-          <PostWithMenu
-            key={index}
-            email={post.email}
-            text={post.post}
-            id={post.id}
-            likes={post.likes}
-          />
-        ) : (
-          <Post
-            key={index}
-            id={post.id}
-            email={post.email}
-            text={post.post}
-            likes={post.likes}
-          />
-        )
-      )}
+      <div className={style.currentUser}>
+        <UserInfo uid={uid} />
+        <button
+          className={style.goProfile}
+          onClick={() => navigate("/profile")}
+        >
+          <i className="fa-solid fa-address-card"></i>
+          <p>Ver mi perfil</p>
+        </button>
+      </div>
+      <div className={style.allPosts}>
+        <PostForm uid={uid} onNewFunction={setUpcomingModal} />
+        {allPosts.map((post, index) =>
+          post.uid === uid ? (
+            <PostWithMenu
+              key={index}
+              email={post.email}
+              text={post.post}
+              id={post.id}
+              likes={post.likes}
+            />
+          ) : (
+            <Post
+              key={index}
+              id={post.id}
+              email={post.email}
+              text={post.post}
+              likes={post.likes}
+            />
+          )
+        )}
+      </div>
       <UpcomingModal state={upcomingModal} onChangeState={setUpcomingModal} />
     </section>
   );
