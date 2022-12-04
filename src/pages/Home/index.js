@@ -2,17 +2,22 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header";
 import { Post, PostWithMenu } from "../../components/Posts";
-import { auth, db } from "../../firebase/firebase";
+import {
+  auth,
+  db,
+  collection,
+  onSnapshot,
+  orderBy,
+  query,
+} from "../../firebase/firebase";
 import style from "./Home.module.css";
 import { PostForm } from "../../components/Forms/PostForm";
 import { UserInfo } from "../../components/UserInfo";
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { UpcomingModal } from "../../components/Modal";
 
 function Home() {
   let navigate = useNavigate();
-
-  //const [pic, setPic] = useState(avatar)
+  
   const [allPosts, setAllPosts] = useState([]);
   const [upcomingModal, setUpcomingModal] = useState(false);
   const uid = auth.currentUser.uid;

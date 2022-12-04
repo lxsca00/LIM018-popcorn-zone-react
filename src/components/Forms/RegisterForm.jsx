@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import style from "./Forms.module.css";
-import { db, auth } from "../../firebase/firebase";
-import { setDoc, doc } from "firebase/firestore";
-import { useContext } from "react";
+import {
+  db,
+  auth,
+  setDoc,
+  doc,
+  createUserWithEmailAndPassword,
+} from "../../firebase/firebase";
 import { UserContext } from "../../App";
 
 const RegisterForm = ({ onOpenModal, handleError }) => {

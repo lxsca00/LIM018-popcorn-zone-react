@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { doc, updateDoc } from "firebase/firestore";
-import { db } from "../../firebase/firebase";
+import { db, doc, updateDoc } from "../../firebase/firebase";
 import { preferenceOptions, countryOptions } from "./data-select.js";
 import style from "./Forms.module.css";
 

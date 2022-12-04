@@ -1,29 +1,30 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { LoginForm } from "../../components/Forms/LoginForm";
 import style from "./Login.module.css";
 import login from "../../assets/login.svg";
 import { Modal, UpcomingModal } from "../../components/Modal";
-
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { db, auth } from "../../firebase/firebase";
+import {
+  db,
+  auth,
+  signInWithPopup,
+  provider,
+  setDoc,
+  doc,
+} from "../../firebase/firebase";
 import { useNavigate } from "react-router-dom";
-import { setDoc, doc } from "firebase/firestore";
+import { UserContext } from "../../App";
 
 function Login() {
+  const context = useContext(UserContext);
   let navigate = useNavigate();
 
   const handleGoogleLogin = (e) => {
     e.preventDefault();
-    const provider = new GoogleAuthProvider();
 
     signInWithPopup(auth, provider)
       .then(async (result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        console.log(token)
-        // The signed-in user info.
         const user = result.user;
+        context.setUser(user);
         const uid = user.uid;
         if (user) {
           const userRef = doc(db, "users", uid);
@@ -36,10 +37,7 @@ function Login() {
         }
       })
       .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        console.error(error);
       });
   };
 
@@ -51,23 +49,25 @@ function Login() {
     <section className={style.login}>
       <div className={style.loginContainer}>
         <LoginForm handleError={setError} onOpenModal={setModal} />
-      <p className={style.anotherSignIn}>Ingresa con</p>
-      <div className={style.buttonContainer}>
-        <button className={style.socialMedia} onClick={handleGoogleLogin}>
-          <i className="fa-brands fa-google"></i>
-          <p>Google</p>
-        </button>
-        <button className={style.socialMedia} onClick={() => setUpcomingModal(true)}>
-          <i className="fa-brands fa-facebook-f"></i>
-          <p>Facebook</p>
-        </button>
+        <p className={style.anotherSignIn}>Ingresa con</p>
+        <div className={style.buttonContainer}>
+          <button className={style.socialMedia} onClick={handleGoogleLogin}>
+            <i className="fa-brands fa-google"></i>
+            <p>Google</p>
+          </button>
+          <button
+            className={style.socialMedia}
+            onClick={() => setUpcomingModal(true)}
+          >
+            <i className="fa-brands fa-facebook-f"></i>
+            <p>Facebook</p>
+          </button>
+        </div>
+        <div className={style.goRegister}>
+          <p>¿No tienes cuenta?</p>
+          <a href="/register">Regístrate aquí</a>
+        </div>
       </div>
-      <div className={style.goRegister}>
-        <p>¿No tienes cuenta?</p>
-        <a href="/register">Regístrate aquí</a>
-      </div>
-      </div>
-      
 
       <img src={login} alt="login" />
       <Modal state={modal} onChangeState={setModal}>

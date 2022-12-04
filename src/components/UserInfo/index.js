@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../firebase/firebase";
+import { db, doc, getDoc } from "../../firebase/firebase";
 import style from "./UserInfo.module.css";
 import avatar from "../../assets/avatar.png";
 import { UserContext } from "../../App";

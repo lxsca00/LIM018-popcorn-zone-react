@@ -1,7 +1,6 @@
 import React from "react";
 import style from "./Header.module.css";
-
-import { getAuth, signOut } from "firebase/auth";
+import { auth, signOut } from "../../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 
 function Header() {
@@ -10,7 +9,6 @@ function Header() {
   const handleLogOut = (e) => {
     e.preventDefault();
 
-    const auth = getAuth();
     signOut(auth)
       .then(() => {
         navigate("/");
@@ -23,7 +21,10 @@ function Header() {
   return (
     <header>
       <div className={style.logoContainer}>
-      <img src="https://i.pinimg.com/originals/54/cc/e0/54cce0449cfd4414fdc19b068a97e00a.png" alt="popcorn-zone" />
+        <img
+          src="https://i.pinimg.com/originals/54/cc/e0/54cce0449cfd4414fdc19b068a97e00a.png"
+          alt="popcorn-zone"
+        />
         <h1>PopcornZone</h1>
       </div>
       <button onClick={handleLogOut}>

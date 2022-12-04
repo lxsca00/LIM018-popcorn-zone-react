@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { auth, signInWithEmailAndPassword } from "../../firebase/firebase";
 import style from "./Forms.module.css";
-import { useContext } from "react";
 import { UserContext } from "../../App";
 
 const LoginForm = ({ onOpenModal, handleError }) => {
@@ -13,11 +12,10 @@ const LoginForm = ({ onOpenModal, handleError }) => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    const auth = getAuth();
-
     signInWithEmailAndPassword(auth, context.email, context.password)
       .then((userCredential) => {
         const user = userCredential.user;
+        context.setUser(user)
         if (user) {
           navigate("/home");
         }

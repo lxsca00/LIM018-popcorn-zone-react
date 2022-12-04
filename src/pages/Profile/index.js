@@ -1,12 +1,11 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth, db } from "../../firebase/firebase";
+import { auth, db, doc, onSnapshot } from "../../firebase/firebase";
 import { Header } from "../../components/Header";
 import { Modal } from "../../components/Modal";
 import style from "./Profile.module.css";
 import avatar from "../../assets/avatar.png";
 import { EditProfile } from "../../components/Forms/EditProfile";
-import { doc, onSnapshot } from "firebase/firestore";
 import { UserContext } from "../../App";
 
 function Profile() {
@@ -17,7 +16,7 @@ function Profile() {
   const [genres, setGenres] = useState("¿Qué sueles ver?");
   const [country, setCountry] = useState("Selecciona tu país");
   const [preference, setPreference] = useState("¿Qué prefieres ver?");
-  
+
   const uid = auth.currentUser.uid;
 
   let navigate = useNavigate();
@@ -76,10 +75,7 @@ function Profile() {
       </div>
 
       <Modal state={modal} onChangeState={setModal}>
-        <EditProfile
-          uid={uid}
-          setModal={setModal}
-        ></EditProfile>
+        <EditProfile uid={uid} setModal={setModal}></EditProfile>
       </Modal>
     </section>
   );

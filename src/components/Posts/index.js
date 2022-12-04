@@ -1,16 +1,20 @@
-import { deleteDoc, doc, getDoc, updateDoc } from "firebase/firestore";
 import React, { useState } from "react";
-import { db } from "../../firebase/firebase";
 import { DeletePost } from "../Forms/DeletePost";
 import { EditPost } from "../Forms/EditPost";
 import { Modal } from "../Modal";
-import { auth } from "../../firebase/firebase";
+import {
+  auth,
+  db,
+  deleteDoc,
+  doc,
+  getDoc,
+  updateDoc,
+} from "../../firebase/firebase";
 import avatar from "../../assets/avatar.png";
 import style from "./Post.module.css";
 
 function Post({ email, text, id, likes }) {
   const uid = auth.currentUser.uid;
-  //Se comparte, luego mover al Home.js
 
   const handleLike = async () => {
     const docRef = doc(db, "posts", id);

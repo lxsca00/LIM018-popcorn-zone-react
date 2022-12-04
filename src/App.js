@@ -6,6 +6,7 @@ import { Login } from "./pages/Login";
 import { Home } from "./pages/Home";
 import { Profile } from "./pages/Profile";
 import { Error404 } from "./pages/Error";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 
 export const UserContext = React.createContext();
 
@@ -13,6 +14,7 @@ function App() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [user, setUser] = useState("");
 
   const values = {
     name,
@@ -21,6 +23,8 @@ function App() {
     setEmail,
     password,
     setPassword,
+    user,
+    setUser,
   };
 
   return (
@@ -30,8 +34,22 @@ function App() {
           <Route path="/" element={<Welcome />} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
-          <Route path="home" element={<Home />} />
-          <Route path="profile" element={<Profile />} />
+          <Route
+            path="home"
+            element={
+              <ProtectedRoute user={user}>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="profile"
+            element={
+              <ProtectedRoute user={user}>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
           <Route path="error" element={<Error404 />} />
         </Routes>
       </BrowserRouter>
