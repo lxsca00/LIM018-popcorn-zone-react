@@ -1,24 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 import { preferenceOptions, countryOptions } from "./data-select.js";
 import style from "./Forms.module.css";
 
-const EditProfile = ({
-  uid,
-  description,
-  genres,
-  country,
-  preference,
-  setCountry,
-  setPreference,
-  setGenres,
-  setDescription,
-  setModal
-}) => {
+const EditProfile = ({ uid, setModal }) => {
   // Select en react
   // https://www.geeksforgeeks.org/how-to-use-html-select-tag-in-reactjs/
   // https://www.youtube.com/watch?v=Y9-UkL6ent4&t=709s
+
+  const [description, setDescription] = useState("");
+  const [genres, setGenres] = useState("");
+  const [country, setCountry] = useState("Selecciona tu país");
+  const [preference, setPreference] = useState("¿Qué prefieres ver?");
 
   const handleCountry = (e) => {
     setCountry(e.target.value);
@@ -36,7 +30,7 @@ const EditProfile = ({
       country,
       preference,
     });
-    setModal(false)
+    setModal(false);
   };
 
   return (
@@ -53,14 +47,24 @@ const EditProfile = ({
       />
       <label>País</label>
       <select value={country} onChange={handleCountry}>
+        <option key="disabled-country" disabled>
+          Selecciona tu país
+        </option>
         {countryOptions.map((option) => (
-          <option value={option}>{option}</option>
+          <option value={option} key={option}>
+            {option}
+          </option>
         ))}
       </select>
       <label>¿Qué prefieres ver?</label>
       <select value={preference} onChange={handlePreferences}>
+        <option key="disabled-preference" disabled>
+          ¿Qué prefieres ver?
+        </option>
         {preferenceOptions.map((option) => (
-          <option value={option}>{option}</option>
+          <option value={option} key={option}>
+            {option}
+          </option>
         ))}
       </select>
       <label>¿Cuáles son tus géneros preferidos?</label>

@@ -25,6 +25,7 @@ form h1 {
 form label {
     align-self: flex-start;
     font-size: 0.9rem;
+    margin: 0.5rem 0
 }
 
 form button {

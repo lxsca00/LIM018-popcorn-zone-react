@@ -1,5 +1,4 @@
 export const preferenceOptions = [
-  "¿Qué prefieres ver?",
   "Series",
   "Peliculas",
   "Documentales",
@@ -7,7 +6,6 @@ export const preferenceOptions = [
 ];
 
 export const countryOptions = [
-  "Selecciona tu país",
   "Afganistán",
   "Albania",
   "Alemania",

@@ -17,6 +17,7 @@ function Profile() {
   const [genres, setGenres] = useState("¿Qué sueles ver?");
   const [country, setCountry] = useState("Selecciona tu país");
   const [preference, setPreference] = useState("¿Qué prefieres ver?");
+  
   const uid = auth.currentUser.uid;
 
   let navigate = useNavigate();
@@ -78,14 +79,6 @@ function Profile() {
         <EditProfile
           uid={uid}
           setModal={setModal}
-          description={description}
-          country={country}
-          preference={preference}
-          genres={genres}
-          setCountry={setCountry}
-          setPreference={setPreference}
-          setGenres={setGenres}
-          setDescription={setDescription}
         ></EditProfile>
       </Modal>
     </section>
