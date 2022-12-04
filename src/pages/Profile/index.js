@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, db, doc, onSnapshot } from "../../firebase/firebase";
 import { Header } from "../../components/Header";
@@ -17,6 +17,8 @@ function Profile() {
   const [country, setCountry] = useState("Selecciona tu país");
   const [preference, setPreference] = useState("¿Qué prefieres ver?");
 
+  const [photo, setPhoto] = useState(avatar);
+
   const uid = auth.currentUser.uid;
 
   let navigate = useNavigate();
@@ -28,6 +30,7 @@ function Profile() {
       (user) => {
         context.setEmail(user.data().email);
         context.setName(user.data().name);
+        setPhoto(user.data().photo);
         if (user.data().description !== undefined) {
           setCountry(user.data().country);
           setDescription(user.data().description);
@@ -38,13 +41,15 @@ function Profile() {
     );
   };
 
-  userData();
+  useEffect(() => {
+    userData();
+  });
 
   return (
     <section className={style.profile}>
       <Header />
       <div className={style.pic}>
-        <img src={avatar} alt={context.name} />
+        <img src={photo} alt={context.name} />
       </div>
       <p>{context.name}</p>
       <p>{context.email}</p>

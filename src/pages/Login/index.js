@@ -15,6 +15,9 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../App";
 
 function Login() {
+  const [modal, setModal] = useState(false);
+  const [upcomingModal, setUpcomingModal] = useState(false);
+  const [error, setError] = useState("");
   const context = useContext(UserContext);
   let navigate = useNavigate();
 
@@ -40,10 +43,6 @@ function Login() {
         console.error(error);
       });
   };
-
-  const [modal, setModal] = useState(false);
-  const [upcomingModal, setUpcomingModal] = useState(false);
-  const [error, setError] = useState("este es un error");
 
   return (
     <section className={style.login}>

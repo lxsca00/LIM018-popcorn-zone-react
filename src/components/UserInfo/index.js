@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { db, doc, getDoc } from "../../firebase/firebase";
 import style from "./UserInfo.module.css";
 import avatar from "../../assets/avatar.png";
@@ -6,6 +6,7 @@ import { UserContext } from "../../App";
 
 const UserInfo = ({ uid }) => {
   const context = useContext(UserContext);
+  const [photo, setPhoto] = useState(avatar);
 
   const getData = async () => {
     const docRef = doc(db, "users", uid);
@@ -13,6 +14,7 @@ const UserInfo = ({ uid }) => {
     if (docSnap.exists()) {
       context.setName(docSnap.data().name);
       context.setEmail(docSnap.data().email);
+      setPhoto(docSnap.data().photo);
     }
   };
 
@@ -21,7 +23,7 @@ const UserInfo = ({ uid }) => {
   return (
     <div className={style.currentUser}>
       <div className={style.pic}>
-        <img src={avatar} alt={context.name} />
+        <img src={photo} alt={context.name} />
       </div>
       <div className={style.userData}>
         <p>{context.name}</p>
